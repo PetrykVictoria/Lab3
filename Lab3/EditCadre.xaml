@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3.EditCadre"
+             Title="EditCadre">
+    <ScrollView>
+        <StackLayout>
+            <HorizontalStackLayout Padding="0,10" >
+
+                <VerticalStackLayout>
+                    <HorizontalStackLayout>
+                        <Entry x:Name="FullNameEntry" TextChanged="LetterEntryTextChanged" Placeholder="FullName" Margin="10,20" WidthRequest="125"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="NameOfFacEntry" TextChanged="LetterEntryTextChanged" Placeholder="Faculty" Margin="10,20" WidthRequest="125"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="DepartmentEntry" TextChanged="LetterEntryTextChanged" Placeholder="Department" Margin="10,20" WidthRequest="125"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="ChairEntry" TextChanged="LetterEntryTextChanged" Placeholder="Chair" Margin="10,20" WidthRequest="125"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <HorizontalStackLayout>
+                        <Picker x:Name="TypeOfEducPicker" Title="Type Of Education" Margin="100,5">
+                            <Picker.Items>
+                                <x:String>Аспірантура</x:String>
+                                <x:String>Базова</x:String>
+                                <x:String>Докторантура</x:String>
+                                <x:String>Додаткова</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="EducInstitutionEntry" TextChanged="LetterEntryTextChanged" Placeholder="EducInstitution" Margin="100,35"  WidthRequest="125"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="StartDateEntry" TextChanged="NumberEntryTextChanged" Placeholder="StartDate" Margin="100,5"  WidthRequest="125"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="FinalDateEntry" TextChanged="NumberEntryTextChanged" Placeholder="FinalDate" Margin="100,35"  WidthRequest="125"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                
+                <VerticalStackLayout>
+                    <Button Text="Edit data" Clicked="EditButton_Clicked" Margin="150" FontAttributes="Bold" BorderColor="Black" BackgroundColor="#d888ed" TextColor="Black"/>
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+
+            <CollectionView x:Name="SearchResultsCollectionView" HorizontalOptions="Start" Margin="10,10,10,10" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#f5cefd" BorderColor="Black" CornerRadius="8" Margin="5" HeightRequest="280" WidthRequest="500">
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="П.І.Б: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Fullname}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Тип освіти: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding TypeOfeducation}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Назва факультету: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding NameOfFac}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="Відділення: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Department}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Кафедра: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Chair}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="Навчальний заклад: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding EducInstitution}" FontSize="16" LineBreakMode="WordWrap"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Дата початку: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding StartDate}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Дата закінчення: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding FinalDate}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3.AddCadre"
+             Title="AddCadre">
+
+    <ScrollView>
+        <StackLayout>
+
+            <HorizontalStackLayout Padding="0,10" >
+
+                <VerticalStackLayout>
+                    <HorizontalStackLayout>
+                        <Entry x:Name="FullNameEntry" TextChanged="LetterEntryTextChanged" Placeholder="FullName" Margin="10,20" WidthRequest="125"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="NameOfFacEntry" TextChanged="LetterEntryTextChanged" Placeholder="Faculty" Margin="10,20" WidthRequest="125"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="DepartmentEntry" TextChanged="LetterEntryTextChanged" Placeholder="Department" Margin="10,20" WidthRequest="125"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="ChairEntry" TextChanged="LetterEntryTextChanged" Placeholder="Chair" Margin="10,20" WidthRequest="125"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <HorizontalStackLayout>
+                        <Picker x:Name="TypeOfEducPicker" Title="Type Of Education" Margin="100,5">
+                            <Picker.Items>
+                                <x:String>Аспірантура</x:String>
+                                <x:String>Базова</x:String>
+                                <x:String>Докторантура</x:String>
+                                <x:String>Додаткова</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="EducInstitutionEntry" TextChanged="LetterEntryTextChanged" Placeholder="EducInstitution" Margin="100,35"  WidthRequest="125"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="StartDateEntry" TextChanged="NumberEntryTextChanged" Placeholder="StartDate" Margin="100,5"  WidthRequest="125"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+                        <Entry x:Name="FinalDateEntry" TextChanged="NumberEntryTextChanged" Placeholder="FinalDate" Margin="100,35"  WidthRequest="125"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Button Text="Add data" Clicked="SaveButton_Clicked" Margin="150" FontAttributes="Bold" BorderColor="Black" BackgroundColor="#d888ed" TextColor="Black"/>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

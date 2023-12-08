@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3.MainPage" Padding="10,10,10,10">
+
+    <ScrollView>
+        <StackLayout>
+            <VerticalStackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Choose file" Grid.Column="0" Clicked="ChooseFileButton_Clicked" FontAttributes="Bold" BackgroundColor="#cdcdcd" BorderColor="Black" TextColor="Black" />
+                    <Button Text="Info" Grid.Column="2" Margin="0,0,5,0" Clicked="InfoButton_Clicked" FontAttributes="Bold" BackgroundColor="#cdcdcd" BorderColor="Black" TextColor="Black"/>
+                    <Button Text="Close" Grid.Column="3" Clicked="CloseButton_Clicked" FontAttributes="Bold" BackgroundColor="#ec807f" BorderColor="Black" TextColor="Black"/>
+                </Grid>
+
+                <HorizontalStackLayout Padding="0,10"  VerticalOptions="Center" HorizontalOptions="Center">
+
+                    <VerticalStackLayout>
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="FullNameBox" CheckedChanged="FullNameBox_CheckedChanged" />
+                            <Entry x:Name="FullNameEntry" TextChanged="LetterEntryTextChanged" Placeholder="FullName" Margin="0,20" IsEnabled="False" WidthRequest="125"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout>
+                            <CheckBox x:Name="NameOfFacBox" CheckedChanged="NameOfFacBox_CheckedChanged" Margin="0,20"/>
+                            <Picker x:Name="NameOfFacPicker" MinimumWidthRequest="125" Title="Faculty" IsEnabled="False" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Margin="100,0">
+                        <HorizontalStackLayout >
+                            <CheckBox x:Name="DepartmentBox" CheckedChanged="DepartmentBox_CheckedChanged" Margin="0,20"/>
+                            <Picker x:Name="DepartmentPicker" MinimumWidthRequest="125" Title="Department" IsEnabled="False"/>
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout Padding="0,5">
+                            <CheckBox x:Name="ChairBox" Margin="0,20" CheckedChanged="ChairBox_CheckedChanged"/>
+                            <Picker x:Name="ChairPicker" Title="Chair" MinimumWidthRequest="125" IsEnabled="False" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                    <VerticalStackLayout  VerticalOptions="Center" HorizontalOptions="Center">
+                        <Button Text="Search" x:Name="SearchButton" IsEnabled="False" HeightRequest="55" WidthRequest="125" Clicked="SearchButton_Clicked" FontAttributes="Bold" BorderColor="Black" BackgroundColor="#d888ed" TextColor="Black"/>
+                        <Button Text="Clear" HeightRequest="55" WidthRequest="125" Margin="0,5,0,0" Clicked="ClearButton_Clicked" FontAttributes="Bold" BorderColor="Black" BackgroundColor="#d888ed" TextColor="Black"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" >
+                    <Button Text="Add data" x:Name="AddButton" IsEnabled="False" Margin="0,0,5,0" Clicked="AddCadreButton_Clicked" HeightRequest="55" FontAttributes="Bold" BorderColor="Black" BackgroundColor="#d888ed" TextColor="Black"/>
+                    <Button Text="Edit data" x:Name="EditButton" IsEnabled="False" Clicked="EditCadreButton_Clicked" Margin="0,0,5,0" FontAttributes="Bold" BorderColor="Black" BackgroundColor="#d888ed" TextColor="Black"/>
+                    <Button Text="Delete data" x:Name="DeleteButton" IsEnabled="False" Clicked="DeleteCadreButton_Clicked" Margin="0,0,5,0" FontAttributes="Bold" BorderColor="Black" BackgroundColor="#d888ed" TextColor="Black"/>
+                    <Button Text="Save data" x:Name="SaveButton" IsEnabled="False" Clicked="SaveButton_Clicked" Margin="0,0,100,0" FontAttributes="Bold" BorderColor="Black" BackgroundColor="#d888ed" TextColor="Black"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <CollectionView x:Name="SearchResultsCollectionView" Grid.Row="3" Grid.ColumnSpan="12" Margin="10,10,10,10" >
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3"  />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#f5cefd" BorderColor="Black" CornerRadius="8" Margin="5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnFrameTapped" />
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="П.І.Б: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Fullname}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Тип освіти: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding TypeOfeducation}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Назва факультету: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding NameOfFac}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="Відділення: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Department}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Кафедра: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Chair}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="Навчальний заклад: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding EducInstitution}" FontSize="16" LineBreakMode="WordWrap"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Дата початку: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding StartDate}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Дата закінчення: " FontSize="16" FontAttributes="Bold"/>
+                                    <Label Text="{Binding FinalDate}" FontSize="16" Padding="5,0,0,0"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
